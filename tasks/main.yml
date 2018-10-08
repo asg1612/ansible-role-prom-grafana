@@ -1,0 +1,32 @@
+---
+# tasks file for monitor
+
+- name: Create data directory for prometheus
+  file:
+    state: directory
+    path: "{{ source_data_prom }}"
+    mode: 0777
+
+- name: Create data directory for Graphana
+  file:
+    state: directory
+    path: "{{ source_data_graf }}"
+    mode: 0777
+    
+- name: uplodad docker-compose
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ source_data_prom }}/docker-compose.yml"
+
+- name: upload prometheus file
+  template:
+    src: prometheus.yml.j2
+    dest: "{{ source_data_prom }}/prometheus.yml"
+
+- name: start docker compose
+  docker_service:
+    project_src: "{{ source_data_prom }}"
+  register: output
+
+- debug:
+    var: output

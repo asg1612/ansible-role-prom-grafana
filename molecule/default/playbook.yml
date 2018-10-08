@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    docker_version: 18.06.*
+    source_data_prom: /data/prom/
+    target_data_prom: /prometheus/
+    source_data_graf: /data/graf
+  roles:
+    - role: asg1612.docker
+    - role: monitor
