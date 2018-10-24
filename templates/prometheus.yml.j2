@@ -6,6 +6,7 @@ global:
   external_labels:
     monitor: 'codelab-monitor'
 
+
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:
@@ -17,3 +18,8 @@ scrape_configs:
 
     static_configs:
       - targets: ['localhost:9090']
+
+   # consul config
+    consul_sd_configs:
+    - server:   '192.168.154.115:8500'
+      services: ["node"]
