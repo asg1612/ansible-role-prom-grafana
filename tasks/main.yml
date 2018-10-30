@@ -10,7 +10,7 @@
 - name: Create data directory for Graphana
   file:
     state: directory
-    path: "{{ source_data_graf }}"
+    path: "{{ source_data_grafana }}"
     mode: 0777
 
 - name: uplodad docker-compose
@@ -23,10 +23,13 @@
     src: prometheus.yml.j2
     dest: "{{ source_data_prom }}/prometheus.yml"
 
-- name: start docker compose
-  docker_service:
-    project_src: "{{ source_data_prom }}"
-  register: output
+- name: Run docker compose
+  docker_stack:
+    state: present
+    name: monitor
+    compose:
+      - "{{ source_data_prom }}docker-compose.yml"
+  when: inventory_hostname == groups['docker_swarm_manager'][0]
 
 - debug:
     var: output

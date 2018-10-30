@@ -5,7 +5,9 @@
     docker_version: 18.06.*
     source_data_prom: /data/prom/
     target_data_prom: /prometheus/
-    source_data_graf: /data/graf
+    source_data_grafana: /data/graf
   roles:
     - role: asg1612.docker
+    - role: asg1612.dockerswarm
+    - role: asg1612.traefik
     - role: monitor

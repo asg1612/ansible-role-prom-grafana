@@ -1,2 +1,4 @@
 ---
 - src: asg1612.docker
+- src: asg1612.dockerswarm
+- src: asg1612.traefik

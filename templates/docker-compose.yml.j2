@@ -1,5 +1,5 @@
 ---
-  version: '3'
+  version: '3.7'
   services:
     prometheus:
       image: prom/prometheus
@@ -7,12 +7,29 @@
         - {{ source_data_prom }}:{{ target_data_prom }}
         - {{ source_data_prom }}/prometheus.yml:/etc/prometheus/prometheus.yml
       ports:
-        - "9090:9090"
+        - "9090"
+      networks:
+        - traefik-net
+      deploy:
+        labels:
+          traefik.port: 9090
+          traefik.docker.network: "traefik-net"
     grafana:
       image: grafana/grafana
+      volumes:
+        - {{ source_data_grafana}}:/var/lib/grafana
       ports:
-        - "3000:3000"
+        - "3000"
+      networks:
+        - traefik-net
+      deploy:
+        labels:
+          traefik.port: 3000
+          traefik.docker.network: "traefik-net"
       environment:
         GF_SERVER_ROOT_URL: http://registry.hsap.sacyl.es
         GF_SERVER_DOMAIN: registry.hsap.sacyl.es
         GF_SECURITY_ADMIN_PASSWORD: secret
+  networks:
+    traefik-net:
+      external: true
