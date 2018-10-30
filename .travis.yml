@@ -16,6 +16,8 @@ before_install:
 # Install molecule
 install:
   - pip install -r test-requirements.txt
+  # remove this line when use ansible 2.8
+  - pip install git+git://github.com/ansible/ansible.git@devel --upgrade
 
 script:
   - molecule test --driver-name docker
