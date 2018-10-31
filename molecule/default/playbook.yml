@@ -6,6 +6,11 @@
     source_data_prom: /data/prom/
     target_data_prom: /prometheus/
     source_data_grafana: /data/graf
+    prom_dns: "monitor-prometheus.docker.localhost"
+    grafana_dns: "monitor-grafana.docker.localhost"
+    GF_SERVER_ROOT_URL: "http://monitor-prometheus.docker.localhost"
+    GF_SERVER_DOMAIN: "monitor-prometheus.docker.localhost"
+    GF_SECURITY_ADMIN_PASSWORD: "secret"
   roles:
     - role: asg1612.docker
     - role: asg1612.dockerswarm

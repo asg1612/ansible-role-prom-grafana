@@ -14,6 +14,7 @@
         labels:
           traefik.port: 9090
           traefik.docker.network: "traefik-net"
+          traefik.frontend.rule: "Host:{{ prom_dns }}"
     grafana:
       image: grafana/grafana
       volumes:
@@ -26,10 +27,11 @@
         labels:
           traefik.port: 3000
           traefik.docker.network: "traefik-net"
+          traefik.frontend.rule: "Host:{{ grafana_dns }}"
       environment:
-        GF_SERVER_ROOT_URL: http://registry.hsap.sacyl.es
-        GF_SERVER_DOMAIN: registry.hsap.sacyl.es
-        GF_SECURITY_ADMIN_PASSWORD: secret
+        GF_SERVER_ROOT_URL: {{ GF_SERVER_ROOT_URL }}
+        GF_SERVER_DOMAIN: {{ GF_SERVER_DOMAIN }}
+        GF_SECURITY_ADMIN_PASSWORD: {{ GF_SECURITY_ADMIN_PASSWORD }}
   networks:
     traefik-net:
       external: true

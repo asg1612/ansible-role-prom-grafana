@@ -16,6 +16,11 @@ volumes:
 - **source_data_prom**: Souce path to data prometheus.
 - **target_data_prom**: target path to Prometheus.
 - **source_data_graf**: Path to store Grafana data.
+- **prom_dns**: DNS prometheus
+- **grafana_dns**: DNS grafana
+- **GF_SERVER_ROOT_URL**: Grafana server root url
+- **GF_SERVER_DOMAIN**: Grafana server domain
+- **GF_SECURITY_ADMIN_PASSWORD**: Grafana security admin password
 
 
 Dependencies
