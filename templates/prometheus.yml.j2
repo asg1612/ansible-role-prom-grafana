@@ -21,5 +21,5 @@ scrape_configs:
 
    # consul config
     consul_sd_configs:
-    - server:   '192.168.154.115:8500'
-      services: ["node"]
+    - server:   '{{ consul_ip }}:8500'
+      services: ["node", "traefik"]

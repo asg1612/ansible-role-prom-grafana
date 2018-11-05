@@ -11,6 +11,8 @@
     GF_SERVER_ROOT_URL: "http://monitor-prometheus.docker.localhost"
     GF_SERVER_DOMAIN: "monitor-prometheus.docker.localhost"
     GF_SECURITY_ADMIN_PASSWORD: "secret"
+    prometheus_metrics: true
+    consul_ip: "192.168.154.115"
   roles:
     - role: asg1612.docker
     - role: asg1612.dockerswarm
