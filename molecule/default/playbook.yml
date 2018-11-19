@@ -12,7 +12,7 @@
     GF_SERVER_DOMAIN: "monitor-prometheus.docker.localhost"
     GF_SECURITY_ADMIN_PASSWORD: "secret"
     prometheus_metrics: true
-    consul_ip: "192.168.154.115"
+    consul_ip: false
   roles:
     - role: asg1612.docker
     - role: asg1612.dockerswarm
