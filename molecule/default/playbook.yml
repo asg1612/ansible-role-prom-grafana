@@ -17,4 +17,4 @@
     - role: asg1612.docker
     - role: asg1612.dockerswarm
     - role: asg1612.traefik
-    - role: monitor
+    - role: ansible-role-prom-grafana
