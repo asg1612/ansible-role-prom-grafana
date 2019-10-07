@@ -21,7 +21,7 @@ scrape_configs:
 
    # consul config
     consul_sd_configs:
-    - server:   '{{ consul_ip }}:8500'
+    - server:   'localhost:8500'
       services: ["node", "traefik", "docker"]
 
   - job_name: 'snmp'
