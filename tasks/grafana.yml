@@ -1,0 +1,21 @@
+---
+- name: Install packages
+  apt:
+    name: ["software-properties-common", "apt-transport-https", "gpg"]
+    state: present
+
+- name: Add our GPG key to install signed packages
+  apt_key:
+    url: https://packages.grafana.com/gpg.key
+    state: present
+
+- name: Add this repository for stable releases
+  apt_repository:
+     repo: deb https://packages.grafana.com/oss/deb stable main
+     state: present
+
+- name: Install Grafana
+  apt:
+    name: ["grafana"]
+    state: present
+    update_cache: yes
