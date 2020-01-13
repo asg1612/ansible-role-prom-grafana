@@ -1,0 +1,23 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: ubuntu-1
+    image: asg1612/docker-systemd
+    privileged: true
+    required: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    command: /lib/systemd/systemd
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
